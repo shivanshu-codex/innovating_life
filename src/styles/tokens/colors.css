@@ -75,11 +75,11 @@
   --color-info-bg:      var(--dusk-50);
 
   /* —— SURFACES —— */
-  --surface-page:       var(--stone-50);
-  --surface-card:       var(--stone-0);
+  --surface-page:       #FFFDF9;
+  --surface-card:       #FFFFFF;
   --surface-card-hover: var(--soul-50);
-  --surface-overlay:    rgba(253,252,249,0.92);
-  --surface-glass:      rgba(253,252,249,0.70);
+  --surface-overlay:    rgba(255,253,249,0.94);
+  --surface-glass:      rgba(255,253,249,0.82);
 
   /* —— BORDERS —— */
   --border-soft:        rgba(160,152,144,0.25);
@@ -105,31 +105,29 @@
   --interactive-secondary-hover-bg:  var(--stone-100);
 }
 
-/* —— DARK MODE — Twilight Palette —— */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface-page:    #1A1814;
-    --surface-card:    #222019;
-    --surface-card-hover: #2A2720;
-    --surface-glass:   rgba(26,24,20,0.80);
-    --surface-overlay: rgba(26,24,20,0.94);
+/* —— DARK MODE — Twilight Palette (only when [data-theme="dark"] is set on <html>) —— */
+[data-theme="dark"] {
+  --surface-page:    #1A1814;
+  --surface-card:    #222019;
+  --surface-card-hover: #2A2720;
+  --surface-glass:   rgba(26,24,20,0.80);
+  --surface-overlay: rgba(26,24,20,0.94);
 
-    --border-soft:     rgba(255,240,200,0.08);
-    --border-default:  rgba(255,240,200,0.14);
-    --border-strong:   rgba(255,240,200,0.24);
+  --border-soft:     rgba(255,240,200,0.08);
+  --border-default:  rgba(255,240,200,0.14);
+  --border-strong:   rgba(255,240,200,0.24);
 
-    --text-primary:    #F5EFE0;
-    --text-body:       #D9D0C0;
-    --text-secondary:  #B0A898;
-    --text-muted:      #7A7268;
-    --text-placeholder:#5A5450;
-    --text-link:       var(--soul-300);
-    --text-link-hover: var(--soul-200);
+  --text-primary:    #F5EFE0;
+  --text-body:       #D9D0C0;
+  --text-secondary:  #B0A898;
+  --text-muted:      #7A7268;
+  --text-placeholder:#5A5450;
+  --text-link:       var(--soul-300);
+  --text-link-hover: var(--soul-200);
 
-    --interactive-primary:       var(--soul-400);
-    --interactive-primary-hover: var(--soul-300);
-    --interactive-primary-text:  var(--stone-900);
-  }
+  --interactive-primary:       var(--soul-400);
+  --interactive-primary-hover: var(--soul-300);
+  --interactive-primary-text:  var(--stone-900);
 }
 
 /* —— MOOD THEMES —— */

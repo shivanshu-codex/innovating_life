@@ -8,6 +8,11 @@ body {
   font-family: var(--font-body);
   font-size: var(--text-md);
   line-height: var(--leading-relaxed);
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* Warm custom scrollbar */
