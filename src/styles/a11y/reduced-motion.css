@@ -1,0 +1,74 @@
+@media (prefers-reduced-motion: reduce) {
+
+  :root {
+    --dur-instant:  0ms !important;
+    --dur-fast:     0ms !important;
+    --dur-moderate: 0ms !important;
+    --dur-slow:     0ms !important;
+    --dur-glacial:  0ms !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto   !important;
+  }
+
+  /* Hero — appear immediately, no stagger */
+  .hero__title,
+  .hero__subtitle,
+  .hero__ctas,
+  .hero__stats {
+    opacity:   1;
+    transform: none;
+    animation: none;
+  }
+
+  /* Cards — no hover lift */
+  .card-interactive:hover {
+    transform:  none;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Modals — appear instantly */
+  .report-modal__card,
+  .first-story-celebration__card,
+  .bottom-sheet {
+    animation: none;
+    transform: none;
+  }
+
+  /* Notification badge — no pop */
+  .notif-badge {
+    animation: none;
+  }
+
+  /* Skeleton — no shimmer */
+  .skeleton::after {
+    animation: none;
+    background: var(--stone-200);
+  }
+
+  /* Pause card — no breathing pulse */
+  .pause-card__breath {
+    animation: none;
+  }
+
+  /* Particle canvas — disable entirely */
+  canvas.lumina-particles {
+    display: none;
+  }
+
+  /* Year in Review slides — no slide animation */
+  .year-review__slide.is-active {
+    animation: none;
+  }
+
+  /* Streak milestone — no celebration */
+  .streak-milestone {
+    animation: none;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "custom-property-empty-line-before": null,
+    "color-no-invalid-hex":              true,
+    "font-family-no-duplicate-names":    true,
+    "no-duplicate-selectors":            true,
+    "declaration-property-value-allowed-list": {
+      "background-color": ["/var\\(--/", "transparent", "white", "inherit", "currentColor"],
+      "color":            ["/var\\(--/", "inherit", "currentColor", "white"]
+    },
+    "comment-word-disallowed-list": [
+      ["TODO: fix later", "HACK", "fuck", "shit"]
+    ]
+  }
+}

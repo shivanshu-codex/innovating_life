@@ -1,0 +1,98 @@
+/* ============================================
+   LUMINA — STORY PAGE MOBILE OVERRIDES
+   ============================================ */
+
+@media (max-width: 767px) {
+
+  /* Reading progress bar stays at top */
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 200;
+  }
+
+  /* Hero shorter on mobile */
+  .story-hero {
+    height: 220px;
+    border-radius: 0;
+  }
+
+  /* Story body full-bleed, comfortable reading */
+  .story-article {
+    padding: var(--space-5) var(--space-4);
+    max-width: 100%;
+  }
+
+  .story-article h2 {
+    font-size: clamp(1.125rem, 4.5vw, 1.375rem);
+  }
+
+  .story-body p {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* Author meta — compact row */
+  .story-author-row {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  /* Story action bar (like/save/share) — fixed at bottom on mobile */
+  .story-actions-bar {
+    position: fixed;
+    bottom: var(--bottom-nav-height);
+    left: 0;
+    right: 0;
+    background: var(--surface-card);
+    border-top: 1px solid var(--border-soft);
+    padding: var(--space-3) var(--space-5);
+    padding-bottom: calc(var(--space-3) + var(--safe-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 50;
+  }
+
+  /* More room for content above fixed bar */
+  .story-page {
+    padding-bottom: calc(80px + var(--bottom-nav-height));
+  }
+
+  /* Comments section below article */
+  .story-comments {
+    padding: var(--space-5) var(--space-4);
+    border-top: 1px solid var(--border-soft);
+    margin-top: 0;
+  }
+
+  /* Comment input — full width */
+  .comment-input-row {
+    gap: var(--space-3);
+  }
+
+  .comment-input {
+    font-size: 16px; /* prevent iOS zoom */
+  }
+
+  /* Table of contents hidden on mobile */
+  .story-toc {
+    display: none;
+  }
+
+  /* Reaction counts inline */
+  .story-reaction-row {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  /* Share button — full width pill at bottom of article */
+  .story-share-pill {
+    width: 100%;
+    justify-content: center;
+    margin: var(--space-4) 0;
+  }
+}

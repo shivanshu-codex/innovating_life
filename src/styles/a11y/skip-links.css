@@ -1,0 +1,25 @@
+.skip-link {
+  position:       absolute;
+  top:            -100%;
+  left:           var(--space-4);
+  z-index:        9999;
+  padding:        var(--space-3) var(--space-5);
+  background:     var(--stone-900);
+  color:          var(--soul-400);
+  font-weight:    700;
+  font-size:      var(--text-sm);
+  border-radius:  0 0 var(--radius-lg) var(--radius-lg);
+  text-decoration:none;
+  white-space:    nowrap;
+  transition:     top 0.15s ease;
+}
+
+.skip-link:focus {
+  top:            0;
+  outline:        3px solid var(--soul-400);
+  outline-offset: 2px;
+}
+
+.skip-link:focus ~ .skip-link:focus {
+  top: calc(var(--space-3) * 2 + 1.5rem);
+}

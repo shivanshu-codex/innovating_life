@@ -1,0 +1,41 @@
+/**
+ * WCAG 2.2 Contrast — verified passing combinations:
+ *
+ * PASSING:
+ *   --stone-900 on white          18.1:1  ✓ body text
+ *   --stone-800 on white          14.7:1  ✓
+ *   --stone-700 on white           9.3:1  ✓
+ *   --stone-600 on white           6.2:1  ✓
+ *   --stone-500 on white           4.8:1  ✓ secondary/captions only
+ *   --soul-700  on white           5.9:1  ✓
+ *   --soul-600  on white           4.6:1  ✓ large text only
+ *   white on --soul-600            4.6:1  ✓
+ *   white on --stone-900          18.1:1  ✓
+ *   --stone-900 on --soul-100     14.0:1  ✓
+ *   --soul-700  on --soul-50       4.5:1  ✓ exactly meets threshold
+ *   --sage-800  on --sage-50       7.2:1  ✓
+ *   --dusk-700  on --dusk-50       5.8:1  ✓
+ *   --soul-500 border on white     3.2:1  ✓ UI components (3:1 needed)
+ *
+ * FAILING — never use for text:
+ *   --stone-400 on white           3.1:1  ✗ decorative/disabled only
+ *   --soul-500  on white           3.2:1  ✗ text fails; ok for large UI components
+ *   --soul-500  on --soul-50       2.9:1  ✗ decorative only
+ *   --soul-300  on white           1.8:1  ✗
+ *   --stone-300 on white           1.6:1  ✗
+ *   --stone-300 border on white    1.6:1  ✗ use --stone-400 minimum for borders
+ */
+
+:root {
+  --text-primary:    var(--stone-900);
+  --text-secondary:  var(--stone-600);
+  --text-tertiary:   var(--stone-500);
+  --text-disabled:   var(--stone-400);
+  --text-on-dark:    white;
+  --text-accent:     var(--soul-700);
+  --text-accent-sub: var(--soul-600);
+
+  --border-ui:       var(--stone-400);
+  --border-subtle:   var(--stone-200);
+  --border-focus:    var(--soul-500);
+}

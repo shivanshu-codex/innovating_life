@@ -1,0 +1,108 @@
+.first-story-banner {
+  background:    var(--soul-50);
+  border:        1px solid var(--soul-200);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-5);
+  overflow:      hidden;
+  animation:     slide-down var(--dur-moderate) var(--ease-spring) both;
+}
+
+@keyframes slide-down {
+  from { opacity: 0; transform: translateY(-12px); max-height: 0;   }
+  to   { opacity: 1; transform: translateY(0);     max-height: 80px; }
+}
+
+.first-story-banner__inner {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  padding:     var(--space-3) var(--space-4);
+}
+
+.first-story-banner__icon {
+  color:      var(--soul-500);
+  font-size:  1.1rem;
+  flex-shrink:0;
+}
+
+.first-story-banner__text {
+  flex:        1;
+  font-size:   var(--text-sm);
+  color:       var(--soul-700);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.first-story-banner__close {
+  background: none;
+  border:     none;
+  color:      var(--soul-300);
+  cursor:     pointer;
+  font-size:  0.9rem;
+  padding:    var(--space-1);
+  flex-shrink:0;
+}
+
+.first-story-banner__close:hover { color: var(--soul-500); }
+
+.first-story-celebration {
+  position:        fixed;
+  inset:           0;
+  z-index:         var(--z-modal);
+  background:      rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  padding:         var(--space-4);
+}
+
+.first-story-celebration__card {
+  background:    white;
+  border-radius: var(--radius-3xl);
+  padding:       var(--space-10) var(--space-8);
+  max-width:     420px;
+  width:         100%;
+  text-align:    center;
+  position:      relative;
+  overflow:      hidden;
+  box-shadow:    var(--shadow-xl);
+  animation:     modal-in var(--dur-moderate) var(--ease-spring) both;
+}
+
+.first-story-celebration__confetti {
+  position: absolute;
+  inset:    0;
+  pointer-events: none;
+}
+
+.first-story-celebration__icon {
+  font-size:     2.5rem;
+  color:         var(--soul-500);
+  display:       block;
+  margin-bottom: var(--space-4);
+}
+
+.first-story-celebration__title {
+  font-family:   var(--font-display);
+  font-size:     var(--text-4xl);
+  font-weight:   800;
+  color:         var(--stone-900);
+  margin-bottom: var(--space-4);
+}
+
+.first-story-celebration__body {
+  font-size:    var(--text-base);
+  color:        var(--stone-500);
+  line-height:  1.7;
+  margin-bottom:var(--space-7);
+  max-width:    36ch;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.first-story-celebration__actions {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-3);
+}

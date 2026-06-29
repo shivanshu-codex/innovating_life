@@ -1,0 +1,50 @@
+/* ============================================
+   LUMINA — AVATAR SYSTEM
+   ============================================ */
+
+.avatar {
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--surface-card);
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--dur-fast) var(--ease-spring);
+}
+
+.avatar:hover {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-sm), var(--shadow-glow-soul);
+}
+
+.avatar-xs  { width: 24px;  height: 24px; }
+.avatar-sm  { width: 32px;  height: 32px; }
+.avatar-md  { width: 40px;  height: 40px; }
+.avatar-lg  { width: 56px;  height: 56px; }
+.avatar-xl  { width: 80px;  height: 80px; }
+.avatar-2xl { width: 120px; height: 120px; }
+
+.avatar-initials {
+  background: linear-gradient(135deg, var(--soul-300), var(--bloom-300));
+  color: var(--stone-800);
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.4em;
+  border-radius: var(--radius-full);
+}
+
+.avatar-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.avatar-status {
+  position: absolute;
+  bottom: 1px; right: 1px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-card);
+  background: var(--sage-400);
+}

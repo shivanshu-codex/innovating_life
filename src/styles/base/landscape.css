@@ -1,0 +1,52 @@
+/* ============================================
+   LUMINA — LANDSCAPE MODE ADAPTATIONS
+   Landscape phones have very little vertical space.
+   ============================================ */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+  /* Collapse bottom nav — less vertical space */
+  .bottom-nav {
+    height: 48px;
+  }
+
+  .bottom-nav-inner {
+    height: 48px;
+  }
+
+  /* Hide labels in landscape nav — icons only */
+  .bottom-nav-item {
+    font-size: 0;
+    gap: 0;
+    padding: var(--space-2);
+  }
+
+  /* Write page — two-column layout in landscape */
+  .write-container {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    padding: var(--space-3) var(--space-4);
+    align-items: start;
+  }
+
+  /* Sheets are shorter in landscape */
+  .bottom-sheet {
+    max-height: 85vh;
+  }
+
+  /* Auth visual panel hidden in landscape on phones */
+  .auth-visual {
+    display: none;
+  }
+
+  .auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reduce hero height in landscape */
+  .story-hero {
+    height: 160px;
+  }
+}

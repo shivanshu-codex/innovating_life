@@ -1,0 +1,47 @@
+/**
+ * PRIMARY — Soul (Amber/Gold)
+ *   #F5A800 — warmth, insight, candlelight and late afternoon sun.
+ *   Used for: logo mark, primary CTAs, active states, milestone moments.
+ *
+ * SECONDARY — Bloom (Rose/Pink)
+ *   #F472B6 — tenderness, vulnerability, the courage it takes to share.
+ *
+ * TERTIARY — Sage (Green)
+ *   #4ADE80 — growth, calm, the colour of healing.
+ *
+ * TERTIARY — Dusk (Purple)
+ *   #A78BFA — depth, mystery, the space between waking and sleeping.
+ *
+ * NEUTRAL — Stone (Warm Gray)
+ *   #252320 — grounded, honest, like good paper.
+ *   Stone is warm gray — amber undertones make Lumina feel warm, not clinical.
+ */
+
+:root {
+  --brand-bg:              #FFFDF9;
+  --brand-bg-dark:         #1A1816;
+  --brand-primary:         #F5A800;
+  --brand-primary-dk:      #C47E00;
+  --brand-ambient-bloom:   #FFF0F7;
+  --brand-ambient-sage:    #F0FDF4;
+  --brand-ambient-dusk:    #F5F0FF;
+  --brand-ambient-soul:    #FFF8E6;
+}
+
+body {
+  background-color: var(--brand-bg);
+}
+
+.card {
+  background: white;
+}
+
+.logo__symbol,
+.lumina-mark {
+  color: var(--soul-500);
+}
+
+.gradient-warmth { background: linear-gradient(135deg, var(--soul-50),  var(--bloom-50)); }
+.gradient-growth { background: linear-gradient(135deg, var(--sage-50),  var(--soul-50));  }
+.gradient-depth  { background: linear-gradient(135deg, var(--dusk-50),  var(--bloom-50)); }
+.gradient-calm   { background: linear-gradient(135deg, var(--stone-50), var(--sage-50));  }

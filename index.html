@@ -1,484 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-mood="calm">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovating Life — Live Boldly, Think Deeply</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+  <!-- 1. Charset + viewport FIRST — no exceptions -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- 2. Preconnect: open connections early while browser parses HTML -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- When backend is live: -->
+  <!-- <link rel="preconnect" href="https://api.lumina.in" /> -->
+  <!-- <link rel="preconnect" href="https://cdn.lumina.in" /> -->
+
+  <!-- 3. Critical CSS — inlined, never render-blocking.
+       Contains minimum styles for above-the-fold skeleton.
+       Replace with output of: node scripts/generate-critical.js -->
+  <style id="critical-css">
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+    body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+         background:#FDFAF5;color:#3D3A37;line-height:1.6;
+         -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    #root{min-height:100vh}
+    .sk-shell{display:flex;min-height:100vh;background:#FDFAF5}
+    .sk-sidebar{width:240px;background:#F5F0E8;border-right:1px solid #E8E0D0;
+                padding:24px 16px;display:flex;flex-direction:column;gap:16px;
+                flex-shrink:0}
+    .sk-main{flex:1;padding:24px;display:flex;flex-direction:column;gap:20px;max-width:680px}
+    .sk{background:linear-gradient(90deg,#EDE8DF 25%,#F5F0E8 50%,#EDE8DF 75%);
+        background-size:200% 100%;animation:sk-shimmer 1.5s infinite;border-radius:8px}
+    @keyframes sk-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .sk-logo{width:80px;height:28px;border-radius:6px}
+    .sk-nav{width:100%;height:40px;border-radius:8px}
+    .sk-avatar{width:40px;height:40px;border-radius:50%;flex-shrink:0}
+    .sk-line{height:14px;border-radius:4px}
+    .sk-card{background:#FFF;border-radius:12px;padding:20px;
+             display:flex;flex-direction:column;gap:12px;
+             border:1px solid #E8E0D0}
+    .sk-card-row{display:flex;gap:12px;align-items:center}
+    @media(prefers-reduced-motion:reduce){.sk{animation:none;background:#EDE8DF}}
+    @media(max-width:767px){.sk-sidebar{display:none}.sk-main{padding:16px;max-width:100%}}
+  </style>
+
+  <!-- 4. Preload LCP resource (hero font — display font shown in H1) -->
+  <!-- When font files exist locally: -->
+  <!-- <link rel="preload" href="/fonts/Fraunces-subset.woff2" as="font" type="font/woff2" crossorigin /> -->
+  <!-- <link rel="preload" href="/fonts/PlusJakartaSans-subset.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+  <!-- 5. Google Fonts — fallback while self-hosted fonts aren't available yet -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- 6. SEO & Identity -->
+  <title>Lumina — Your story finds its people</title>
+  <meta name="description" content="A wellbeing community where people share lived experiences, thoughts, and emotions. Join thousands finding connection and meaning." />
+  <link rel="canonical" href="https://lumina.in" />
+
+  <!-- 7. Open Graph -->
+  <meta property="og:type"         content="website" />
+  <meta property="og:url"          content="https://lumina.in" />
+  <meta property="og:title"        content="Lumina — Your story finds its people" />
+  <meta property="og:description"  content="A warm community for honest human stories." />
+  <meta property="og:image"        content="https://lumina.in/og-image.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- 8. Twitter / X Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Lumina — Your story finds its people" />
+  <meta name="twitter:description" content="A warm community for honest human stories." />
+  <meta name="twitter:image"       content="https://lumina.in/og-image.jpg" />
+
+  <!-- 9. Theme color — light and dark -->
+  <meta name="theme-color" content="#C4973A" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1A1814" media="(prefers-color-scheme: dark)" />
+
+  <!-- 10. PWA -->
+  <meta name="mobile-web-app-capable"         content="yes" />
+  <meta name="apple-mobile-web-app-capable"   content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title"     content="Lumina" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192.png" />
+
+  <!-- 11. Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
-
-    <!-- ONBOARDING OVERLAY (Part 10) -->
-    <div class="onboarding-overlay" id="onboardingOverlay" role="dialog" aria-modal="true" aria-label="Welcome" style="display:none">
-        <div class="onboarding-card">
-            <div class="ob-star" aria-hidden="true">✦</div>
-            <h2>Welcome to Innovating Life</h2>
-            <p class="ob-quote">"This is a quiet corner of the internet where people share honest reflections about life. No accounts. No algorithms. Just real thoughts from real people."</p>
-            <div class="ob-features">
-                <div class="ob-feature"><span class="ob-icon" aria-hidden="true">🔮</span><span>Get a personal life message</span></div>
-                <div class="ob-feature"><span class="ob-icon" aria-hidden="true">✍️</span><span>Share your perspective</span></div>
-                <div class="ob-feature"><span class="ob-icon" aria-hidden="true">🌍</span><span>Read stories from around the world</span></div>
+  <!-- Skeleton shell — visible instantly before React mounts.
+       Exact same layout as the real AppShell to prevent layout shift. -->
+  <div id="root">
+    <div class="sk-shell" aria-hidden="true">
+      <nav class="sk-sidebar">
+        <div class="sk sk-logo"></div>
+        <div class="sk sk-nav"></div>
+        <div class="sk sk-nav"></div>
+        <div class="sk sk-nav"></div>
+        <div class="sk sk-nav"></div>
+        <div class="sk sk-nav"></div>
+      </nav>
+      <main class="sk-main">
+        <div class="sk-card">
+          <div class="sk-card-row">
+            <div class="sk sk-avatar"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+              <div class="sk sk-line" style="width:40%"></div>
+              <div class="sk sk-line" style="width:25%"></div>
             </div>
-            <button class="btn btn-primary" onclick="dismissOnboarding()">Begin exploring</button>
+          </div>
+          <div class="sk sk-line" style="width:90%"></div>
+          <div class="sk sk-line" style="width:75%"></div>
+          <div class="sk sk-line" style="width:60%"></div>
         </div>
+        <div class="sk-card">
+          <div class="sk-card-row">
+            <div class="sk sk-avatar"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+              <div class="sk sk-line" style="width:50%"></div>
+              <div class="sk sk-line" style="width:30%"></div>
+            </div>
+          </div>
+          <div class="sk sk-line" style="width:85%"></div>
+          <div class="sk sk-line" style="width:70%"></div>
+        </div>
+        <div class="sk-card">
+          <div class="sk-card-row">
+            <div class="sk sk-avatar"></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+              <div class="sk sk-line" style="width:35%"></div>
+              <div class="sk sk-line" style="width:20%"></div>
+            </div>
+          </div>
+          <div class="sk sk-line" style="width:95%"></div>
+          <div class="sk sk-line" style="width:80%"></div>
+          <div class="sk sk-line" style="width:55%"></div>
+        </div>
+      </main>
     </div>
+  </div>
 
-    <!-- COMMUNITY GUIDELINES MODAL (Part 13.2) -->
-    <div class="modal-overlay" id="guidelinesModal" role="dialog" aria-modal="true" aria-label="Community Guidelines" style="display:none">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeGuidelines()" aria-label="Close">
-                <i class="fas fa-times" aria-hidden="true"></i>
-            </button>
-            <h3>Community Guidelines</h3>
-            <p>This is a space for honest, respectful sharing. We welcome all perspectives and emotions — but not content that targets, harms, or disrespects others.</p>
-            <p>Posts that contain hate speech, spam, or deliberately hurtful content will be removed.</p>
-            <p>When you share here, you're joining a community of people who are trying their best to understand life. Treat every voice with the care you'd want for your own.</p>
-            <button class="btn btn-primary" onclick="closeGuidelines()">I understand</button>
-        </div>
-    </div>
+  <!-- JS at end of body — never blocks HTML parsing.
+       type=module defers automatically. -->
+  <script type="module" src="/src/main.jsx"></script>
 
-    <!-- REPORT DROPDOWN (Part 13.1) -->
-    <div class="report-dropdown" id="reportDropdown" role="menu" style="display:none">
-        <div class="report-title">Report this post</div>
-        <button class="report-option" role="menuitem" onclick="submitReport('spam')">Spam</button>
-        <button class="report-option" role="menuitem" onclick="submitReport('offensive')">Offensive content</button>
-        <button class="report-option" role="menuitem" onclick="submitReport('irrelevant')">Not relevant</button>
-        <button class="report-option" role="menuitem" onclick="submitReport('other')">Other</button>
-    </div>
-
-    <!-- NAVIGATION (Part 14) -->
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="#" class="nav-logo" aria-label="Innovating Life — home">
-                <span class="logo-star" aria-hidden="true">✦</span>
-                <span>Innovating <span class="logo-accent">Life</span></span>
-            </a>
-            <ul class="nav-links" id="navLinks" role="list">
-                <li role="listitem"><a href="#oracle" class="nav-link">Life Oracle</a></li>
-                <li role="listitem"><a href="#share" class="nav-link">Share</a></li>
-                <li role="listitem"><a href="#community" class="nav-link">Community</a></li>
-                <li role="listitem"><a href="#questions" class="nav-link">Explore</a></li>
-                <li role="listitem"><a href="#about" class="nav-link">About</a></li>
-            </ul>
-            <a href="#share" class="btn btn-primary nav-cta">Share your story</a>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <section class="hero" id="hero" aria-label="Hero">
-        <canvas id="particles-canvas" aria-hidden="true"></canvas>
-        <div class="hero-orbs" aria-hidden="true">
-            <div class="orb orb-1"></div>
-            <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-pulse" aria-hidden="true"></span>
-                <span>A Community of Life Thinkers</span>
-            </div>
-            <h1 class="hero-title">
-                Life is Meant<br>to Be
-                <span class="gradient-text animated-gradient">Innovated</span>
-            </h1>
-            <p class="hero-subtitle">
-                A space where curious minds share how they live, love, think, and grow.
-                Your perspective on life matters — and it just might change someone else's.
-            </p>
-            <div class="hero-actions">
-                <a href="#share" class="btn btn-primary btn-lg glow-btn">
-                    <i class="fas fa-pen-nib" aria-hidden="true"></i> Share your perspective
-                </a>
-                <a href="#community" class="btn btn-ghost btn-lg">
-                    <i class="fas fa-compass" aria-hidden="true"></i> Explore stories
-                </a>
-            </div>
-            <!-- Part 12: Real stats from localStorage -->
-            <div class="hero-stats" aria-label="Community statistics">
-                <div class="stat-item">
-                    <span class="stat-num" id="statPosts" data-target="6">6</span>
-                    <span class="stat-label">Stories shared</span>
-                </div>
-                <div class="stat-sep" aria-hidden="true"></div>
-                <div class="stat-item">
-                    <span class="stat-num" id="statCities" data-target="6">6</span>
-                    <span class="stat-label">Cities represented</span>
-                </div>
-                <div class="stat-sep" aria-hidden="true"></div>
-                <div class="stat-item">
-                    <span class="stat-num" id="statWords" data-target="0">0</span>
-                    <span class="stat-label">Words of wisdom</span>
-                </div>
-            </div>
-        </div>
-        <div class="float-card fc-1" aria-hidden="true">
-            <i class="fas fa-quote-left"></i>
-            <p>"The purpose of life is to live it."</p>
-            <span>— Eleanor Roosevelt</span>
-        </div>
-        <div class="float-card fc-2" aria-hidden="true">
-            <i class="fas fa-heart"></i>
-            <p>Hearts shared today</p>
-        </div>
-        <div class="hero-scroll" aria-hidden="true">
-            <span>Scroll to explore</span>
-            <div class="scroll-dot"></div>
-        </div>
-    </section>
-
-    <!-- LIFE ORACLE SECTION (Part 7) -->
-    <section class="section oracle-section" id="oracle" aria-label="Life Oracle">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Personalized for you</span>
-                <h2 class="section-title">Your <span class="gradient-text">Life Oracle</span></h2>
-                <p class="section-desc">Tell us your name and where you're from — we'll craft a message about life, made just for you.</p>
-            </div>
-            <div class="oracle-card reveal">
-                <div class="oracle-left">
-                    <div class="oracle-visual" aria-hidden="true">
-                        <div class="oracle-sphere"><i class="fas fa-star-of-life"></i></div>
-                        <div class="ring ring-a"></div>
-                        <div class="ring ring-b"></div>
-                        <div class="ring ring-c"></div>
-                    </div>
-                    <div class="oracle-form-wrap" id="oracleFormWrap">
-                        <h3 class="oracle-form-title">Who are you, wanderer?</h3>
-                        <div class="field-group">
-                            <label for="oracleName"><i class="fas fa-user" aria-hidden="true"></i> Your first name</label>
-                            <input type="text" id="oracleName" placeholder="Enter your first name…" maxlength="30" class="field-input" autocomplete="given-name">
-                        </div>
-                        <div class="field-group">
-                            <label for="oracleCity"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Your city</label>
-                            <input type="text" id="oracleCity" placeholder="Where are you from?" maxlength="50" class="field-input" autocomplete="address-level2">
-                        </div>
-                        <button class="btn btn-primary w-full mt-sm" onclick="consultOracle()">
-                            <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i> Reveal my life message
-                        </button>
-                    </div>
-                </div>
-                <div class="oracle-right">
-                    <div class="oracle-placeholder" id="oraclePlaceholder" aria-live="polite">
-                        <div class="placeholder-orb" aria-hidden="true"></div>
-                        <p>Your personalized life message will appear here…</p>
-                    </div>
-                    <div class="oracle-response" id="oracleResponse" style="display:none" aria-live="polite">
-                        <div class="response-greeting">
-                            <div class="resp-avatar" id="respAvatar" aria-hidden="true"></div>
-                            <div>
-                                <h3 id="respName"></h3>
-                                <p id="respCity"></p>
-                            </div>
-                        </div>
-                        <div class="response-message" id="respMessage"></div>
-                        <div class="response-quote" id="respQuote"></div>
-                        <div class="response-actions">
-                            <button class="btn btn-ghost btn-sm" onclick="resetOracle()">
-                                <i class="fas fa-rotate" aria-hidden="true"></i> New message
-                            </button>
-                            <button class="btn btn-primary btn-sm" onclick="document.querySelector('#share').scrollIntoView({behavior:'smooth'})">
-                                <i class="fas fa-pen" aria-hidden="true"></i> Share your thoughts
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SHARE YOUR STORY (Parts 4, 5, 6, 8, 13.2) -->
-    <section class="section share-section light-section" id="share" aria-label="Share your story">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Your voice matters</span>
-                <h2 class="section-title">Share Your <span class="gradient-text">Life Story</span></h2>
-                <p class="section-desc">How do you want to live? What have you learned? What do you believe? Your words could shift someone's world.</p>
-            </div>
-            <div class="share-card reveal">
-                <!-- Part 5: Emotional preparation -->
-                <div class="emotional-prep">
-                    <p>Pause for a moment.<br>
-                    There's no rush here. No word count to hit. No performance to give.<br>
-                    Just say what feels true — right now, as you are.</p>
-                </div>
-                <hr class="prep-divider" aria-hidden="true">
-
-                <!-- Part 8: Question context indicator -->
-                <div class="question-indicator" id="questionIndicator" style="display:none" role="status">
-                    <i class="fas fa-quote-left" aria-hidden="true"></i>
-                    <span>You're answering: <em id="questionIndicatorText"></em></span>
-                    <button class="clear-question-btn" onclick="clearQuestionContext()" aria-label="Clear question context">
-                        <i class="fas fa-times" aria-hidden="true"></i>
-                    </button>
-                </div>
-
-                <form id="postForm" novalidate>
-                    <div class="form-row">
-                        <div class="field-group">
-                            <label for="postName"><i class="fas fa-user" aria-hidden="true"></i> Your name</label>
-                            <input type="text" id="postName" class="field-input" placeholder="What should we call you?" required maxlength="40" autocomplete="name">
-                        </div>
-                        <div class="field-group">
-                            <label for="postCity"><i class="fas fa-globe" aria-hidden="true"></i> Your city / country</label>
-                            <input type="text" id="postCity" class="field-input" placeholder="Where are you writing from?" maxlength="50" autocomplete="address-level2">
-                        </div>
-                    </div>
-                    <!-- Life Topic Pills -->
-                    <div class="field-group">
-                        <label><i class="fas fa-tag" aria-hidden="true"></i> Life topic</label>
-                        <div class="pill-group" id="pillGroup" role="group" aria-label="Select a life topic">
-                            <button type="button" class="pill active" data-val="Philosophy">Philosophy</button>
-                            <button type="button" class="pill" data-val="Relationships">Relationships</button>
-                            <button type="button" class="pill" data-val="Purpose">Purpose</button>
-                            <button type="button" class="pill" data-val="Mindfulness">Mindfulness</button>
-                            <button type="button" class="pill" data-val="Growth">Growth</button>
-                            <button type="button" class="pill" data-val="Happiness">Happiness</button>
-                            <button type="button" class="pill" data-val="Wisdom">Wisdom</button>
-                            <button type="button" class="pill" data-val="Love">Love</button>
-                        </div>
-                        <input type="hidden" id="postCategory" value="Philosophy">
-                    </div>
-                    <!-- Part 4: Mood Tags -->
-                    <div class="field-group">
-                        <label><i class="fas fa-heart-pulse" aria-hidden="true"></i> How are you feeling right now? <span class="label-opt">(optional)</span></label>
-                        <div class="mood-pill-group" id="moodPillGroup" role="group" aria-label="Select your current mood">
-                            <button type="button" class="mood-pill" data-mood="Grateful" style="--mc:#E8A849">Grateful</button>
-                            <button type="button" class="mood-pill" data-mood="Hopeful" style="--mc:#7AB89B">Hopeful</button>
-                            <button type="button" class="mood-pill" data-mood="Confused" style="--mc:#8B95A5">Confused</button>
-                            <button type="button" class="mood-pill" data-mood="Sad" style="--mc:#7BA7CC">Sad</button>
-                            <button type="button" class="mood-pill" data-mood="Afraid" style="--mc:#9B8EC4">Afraid</button>
-                            <button type="button" class="mood-pill" data-mood="Lonely" style="--mc:#B89AAF">Lonely</button>
-                            <button type="button" class="mood-pill" data-mood="Healing" style="--mc:#A8C5A0">Healing</button>
-                            <button type="button" class="mood-pill" data-mood="Angry" style="--mc:#C47A6A">Angry</button>
-                            <button type="button" class="mood-pill" data-mood="Peaceful" style="--mc:#7EC8C8">Peaceful</button>
-                            <button type="button" class="mood-pill" data-mood="Brave" style="--mc:#D4A04A">Brave</button>
-                            <button type="button" class="mood-pill" data-mood="Lost" style="--mc:#9CA3AF">Lost</button>
-                            <button type="button" class="mood-pill" data-mood="Inspired" style="--mc:#A78BFA">Inspired</button>
-                        </div>
-                        <input type="hidden" id="postMood" value="">
-                    </div>
-                    <div class="field-group">
-                        <label for="postTitle"><i class="fas fa-heading" aria-hidden="true"></i> Title <span class="label-opt">(optional)</span></label>
-                        <input type="text" id="postTitle" class="field-input" placeholder="Give your story a title…" maxlength="80">
-                    </div>
-                    <div class="field-group">
-                        <label for="postContent"><i class="fas fa-align-left" aria-hidden="true"></i> Your story</label>
-                        <textarea id="postContent" class="field-textarea" rows="6" required maxlength="1000"
-                            placeholder="Share your thoughts on life… How do you want to live? What have you discovered? What wisdom do you carry?"></textarea>
-                        <div class="char-counter"><span id="charCount">0</span> / 1000</div>
-                    </div>
-                    <!-- Hidden fields for edit mode (Part 6) -->
-                    <input type="hidden" id="editPostId" value="">
-                    <div class="form-footer">
-                        <button type="button" class="guidelines-link" onclick="showGuidelines()">
-                            <i class="fas fa-shield-halved" aria-hidden="true"></i> Community guidelines
-                        </button>
-                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
-                            <i class="fas fa-paper-plane" aria-hidden="true"></i> Publish story
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMMUNITY SECTION (Parts 9, 13) -->
-    <section class="section community-section light-section" id="community" aria-label="Community stories">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Community voices</span>
-                <h2 class="section-title">Stories from <span class="gradient-text">Around the World</span></h2>
-                <p class="section-desc">Read how people everywhere are thinking about life and what truly matters to them.</p>
-            </div>
-            <div class="filter-bar reveal" role="group" aria-label="Filter stories by topic">
-                <button class="filter-btn active" data-filter="all">All stories</button>
-                <button class="filter-btn" data-filter="Philosophy">Philosophy</button>
-                <button class="filter-btn" data-filter="Relationships">Relationships</button>
-                <button class="filter-btn" data-filter="Purpose">Purpose</button>
-                <button class="filter-btn" data-filter="Mindfulness">Mindfulness</button>
-                <button class="filter-btn" data-filter="Growth">Growth</button>
-                <button class="filter-btn" data-filter="Happiness">Happiness</button>
-            </div>
-            <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
-            <!-- Part 9.3: Warm empty state with SVG -->
-            <div class="empty-state" id="emptyState" style="display:none">
-                <div class="empty-illustration" aria-hidden="true">
-                    <svg width="120" height="90" viewBox="0 0 120 90" fill="none">
-                        <circle cx="38" cy="48" r="18" fill="rgba(124,92,252,0.1)" stroke="rgba(124,92,252,0.25)" stroke-width="1.5"/>
-                        <circle cx="82" cy="48" r="18" fill="rgba(232,160,191,0.1)" stroke="rgba(232,160,191,0.25)" stroke-width="1.5"/>
-                        <circle cx="60" cy="26" r="14" fill="rgba(126,200,200,0.1)" stroke="rgba(126,200,200,0.25)" stroke-width="1.5"/>
-                        <line x1="38" y1="48" x2="82" y2="48" stroke="rgba(124,92,252,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-                        <line x1="38" y1="48" x2="60" y2="26" stroke="rgba(232,160,191,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-                        <line x1="82" y1="48" x2="60" y2="26" stroke="rgba(126,200,200,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-                    </svg>
-                </div>
-                <p>This space is waiting for your voice.<br>Be the first to share.</p>
-                <a href="#share" class="btn btn-primary">Share your story</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- LIFE QUESTIONS SECTION (Part 8) -->
-    <section class="section questions-section light-section" id="questions" aria-label="Life questions">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-tag">Thought starters</span>
-                <h2 class="section-title">Questions Worth <span class="gradient-text">Asking</span></h2>
-                <p class="section-desc">Let these questions guide your thinking. Click "Answer this" to respond in the community.</p>
-            </div>
-            <div class="questions-grid">
-                <div class="q-card reveal" style="--delay:0s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-compass"></i></div>
-                    <h3>What does the best version of your life look like?</h3>
-                    <p>Imagine five years from now, living exactly how you've always wanted. What does that day look like?</p>
-                    <a href="#share" class="q-link" data-question="What does the best version of your life look like?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <div class="q-card reveal" style="--delay:0.1s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-heart"></i></div>
-                    <h3>How do we truly connect with other people?</h3>
-                    <p>Beyond surface conversations — what creates real, lasting connection between human beings?</p>
-                    <a href="#share" class="q-link" data-question="How do we truly connect with other people?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <div class="q-card reveal" style="--delay:0.2s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-scale-balanced"></i></div>
-                    <h3>What is the best way to live a life?</h3>
-                    <p>Is it about experiences? Relationships? Legacy? Meaning? What principle guides your answer?</p>
-                    <a href="#share" class="q-link" data-question="What is the best way to live a life?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <div class="q-card reveal" style="--delay:0.3s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-seedling"></i></div>
-                    <h3>What does personal growth mean to you?</h3>
-                    <p>Are we always meant to be improving — or is there beauty in simply being who you already are?</p>
-                    <a href="#share" class="q-link" data-question="What does personal growth mean to you?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <div class="q-card reveal" style="--delay:0.4s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-sun"></i></div>
-                    <h3>What makes an ordinary day extraordinary?</h3>
-                    <p>Not every day is a milestone — but every day can be meaningful. How do you find that?</p>
-                    <a href="#share" class="q-link" data-question="What makes an ordinary day extraordinary?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-                <div class="q-card reveal" style="--delay:0.5s">
-                    <div class="q-icon-wrap" aria-hidden="true"><i class="fas fa-star"></i></div>
-                    <h3>What would you tell your younger self about life?</h3>
-                    <p>The wisdom you now carry — what would it have meant to know it sooner?</p>
-                    <a href="#share" class="q-link" data-question="What would you tell your younger self about life?">Answer this <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION (Part 11) -->
-    <section class="section about-section" id="about" aria-label="About Innovating Life">
-        <div class="container">
-            <div class="about-wrap">
-                <div class="about-visual reveal">
-                    <div class="about-card-visual">
-                        <div class="about-avatar-big" aria-hidden="true"><i class="fas fa-user"></i></div>
-                        <div class="about-badge ab-1"><i class="fas fa-lightbulb" aria-hidden="true"></i> Life Explorer</div>
-                        <div class="about-badge ab-2"><i class="fas fa-globe" aria-hidden="true"></i> Global Thinker</div>
-                        <div class="about-badge ab-3"><i class="fas fa-heart" aria-hidden="true"></i> Authentic Voice</div>
-                    </div>
-                </div>
-                <div class="about-text reveal">
-                    <span class="section-tag">The story behind this</span>
-                    <h2 class="section-title">About <span class="gradient-text">Innovating Life</span></h2>
-                    <!-- Part 11.1: The Story -->
-                    <p class="about-story">Innovating Life started with a question I couldn't stop thinking about. What if we stopped scrolling past each other's lives and started actually listening? Not to opinions or hot takes — but to the quiet, honest things people rarely say out loud. This is that space.</p>
-                    <p class="about-body">There came a moment when I asked myself: <em>"Is this really how I want to live?"</em> That question changed everything. I began searching for answers — in books, in conversations, in quiet moments of reflection. The most profound insights weren't in any book. They were in the stories of ordinary people living extraordinary lives.</p>
-                    <!-- Part 11.2: What I Believe -->
-                    <div class="belief-cards">
-                        <div class="belief-card">
-                            <i class="fas fa-lightbulb" aria-hidden="true"></i>
-                            <p>"The right question can change someone's year."</p>
-                        </div>
-                        <div class="belief-card">
-                            <i class="fas fa-comment-dots" aria-hidden="true"></i>
-                            <p>"Honesty is more valuable than eloquence."</p>
-                        </div>
-                        <div class="belief-card">
-                            <i class="fas fa-ear-listen" aria-hidden="true"></i>
-                            <p>"Everyone's perspective matters — especially the quiet ones."</p>
-                        </div>
-                        <div class="belief-card">
-                            <i class="fas fa-heart" aria-hidden="true"></i>
-                            <p>"The internet can still be a place of warmth."</p>
-                        </div>
-                    </div>
-                    <!-- Part 11.3: Get in Touch -->
-                    <p class="about-contact">Say hello → <a href="mailto:hello@innovatinglife.com" class="contact-link">hello@innovatinglife.com</a></p>
-                    <a href="#share" class="btn btn-primary btn-lg">Join the conversation</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER (Part 16) -->
-    <footer role="contentinfo" class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="nav-logo" aria-label="Innovating Life">
-                        <span class="logo-star" aria-hidden="true">✦</span>
-                        <span>Innovating <span class="logo-accent">Life</span></span>
-                    </a>
-                    <p class="footer-tagline">A quiet corner of the internet for honest reflection.</p>
-                    <div class="social-row">
-                        <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" class="social-btn" aria-label="Twitter / X"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" class="social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Explore</h4>
-                    <ul>
-                        <li><a href="#oracle">Life Oracle</a></li>
-                        <li><a href="#share">Share story</a></li>
-                        <li><a href="#community">Community</a></li>
-                        <li><a href="#questions">Life questions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Topics</h4>
-                    <ul>
-                        <li><a href="#community">Philosophy</a></li>
-                        <li><a href="#community">Relationships</a></li>
-                        <li><a href="#community">Purpose</a></li>
-                        <li><a href="#community">Mindfulness</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>About</h4>
-                    <ul>
-                        <li><a href="#about">Our story</a></li>
-                        <li><a href="#" onclick="showGuidelines();return false">Community guidelines</a></li>
-                        <li><a href="#">Privacy policy</a></li>
-                        <li><a href="mailto:hello@innovatinglife.com">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-made">Made with care for humans who want to grow.</p>
-                <p>© 2026 Innovating Life</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- TOAST (Part 14) -->
-    <div class="toast" id="toast" role="alert" aria-live="assertive">
-        <i class="fas fa-check-circle" aria-hidden="true"></i>
-        <span id="toastMsg">Story published!</span>
-    </div>
-
-    <script src="app.js"></script>
+  <!-- Service Worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>

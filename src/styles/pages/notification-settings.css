@@ -1,0 +1,110 @@
+.notif-settings-group {
+  background:    white;
+  border-radius: var(--radius-xl);
+  border:        1px solid var(--stone-100);
+  margin-bottom: var(--space-4);
+  overflow:      hidden;
+}
+
+.notif-settings-group__header {
+  padding:        var(--space-4) var(--space-5);
+  background:     var(--stone-50);
+  border-bottom:  1px solid var(--stone-100);
+  font-size:      var(--text-sm);
+  font-weight:    700;
+  color:          var(--stone-600);
+  letter-spacing: 0.03em;
+}
+
+.notif-row {
+  display:         flex;
+  align-items:     flex-start;
+  justify-content: space-between;
+  padding:         var(--space-4) var(--space-5);
+  gap:             var(--space-4);
+  border-bottom:   1px solid var(--stone-50);
+}
+
+.notif-row:last-child { border-bottom: none; }
+
+.notif-row__label {
+  font-size:     var(--text-sm);
+  font-weight:   500;
+  color:         var(--stone-800);
+  margin-bottom: 2px;
+}
+
+.notif-row__sub {
+  font-size:   var(--text-xs);
+  color:       var(--stone-400);
+  line-height: 1.4;
+}
+
+.notif-channels {
+  display:    flex;
+  gap:        var(--space-3);
+  flex-shrink:0;
+}
+
+.notif-channel-label {
+  display:        flex;
+  flex-direction: column;
+  align-items:    center;
+  gap:            4px;
+  cursor:         pointer;
+}
+
+.notif-channel-label__text {
+  font-size:      10px;
+  color:          var(--stone-400);
+  font-weight:    600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.quiet-hours-section {
+  padding:       var(--space-5);
+  background:    var(--dusk-50);
+  border:        1px solid var(--dusk-200);
+  border-radius: var(--radius-xl);
+  margin-top:    var(--space-4);
+}
+
+.quiet-hours-section__title {
+  font-size:     var(--text-sm);
+  font-weight:   700;
+  color:         var(--dusk-800);
+  margin-bottom: var(--space-1);
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-2);
+}
+
+.quiet-hours-section__desc {
+  font-size:     var(--text-sm);
+  color:         var(--dusk-600);
+  margin-bottom: var(--space-4);
+  line-height:   1.5;
+}
+
+.quiet-hours-times {
+  display:     flex;
+  gap:         var(--space-3);
+  align-items: center;
+}
+
+.quiet-hours-times select {
+  padding:       var(--space-2) var(--space-3);
+  border:        1.5px solid var(--dusk-200);
+  border-radius: var(--radius-lg);
+  background:    white;
+  color:         var(--dusk-800);
+  font-size:     var(--text-sm);
+  font-weight:   600;
+  cursor:        pointer;
+}
+
+.quiet-hours-times__sep {
+  color:     var(--dusk-400);
+  font-size: var(--text-sm);
+}

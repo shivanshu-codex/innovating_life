@@ -1,0 +1,58 @@
+/* ============================================
+   LUMINA — CARD COMPONENT
+   ============================================ */
+
+.card {
+  background: var(--surface-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--dur-normal) var(--ease-spring),
+    box-shadow var(--dur-normal) var(--ease-out-expo),
+    border-color var(--dur-fast) var(--ease-gentle);
+}
+
+/* Warm shimmer line at top */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--soul-300),
+    var(--bloom-300),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity var(--dur-normal) var(--ease-gentle);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md), var(--shadow-glow-soul);
+  border-color: var(--border-default);
+}
+
+.card--featured {
+  border: 1px solid var(--soul-300);
+  background: linear-gradient(135deg, var(--soul-50) 0%, var(--surface-card) 60%);
+}
+
+.card--thought {
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+}
+
+.card--compact {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+}

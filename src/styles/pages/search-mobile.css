@@ -1,0 +1,101 @@
+/* ============================================
+   LUMINA — SEARCH / EXPLORE PAGE MOBILE
+   ============================================ */
+
+@media (max-width: 767px) {
+
+  /* Sticky search bar at top */
+  .explore-search-bar {
+    position: sticky;
+    top: calc(60px + var(--safe-top));
+    z-index: 40;
+    background: var(--surface-page);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-soft);
+    margin: 0 calc(-1 * var(--space-4));
+  }
+
+  .explore-search-input {
+    font-size: 16px; /* prevent iOS zoom */
+    width: 100%;
+  }
+
+  /* Categories as horizontal scroll strip */
+  .explore-categories {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    margin: 0 calc(-1 * var(--space-4));
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-3);
+  }
+
+  .explore-categories::-webkit-scrollbar {
+    display: none;
+  }
+
+  .explore-category-pill {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    white-space: nowrap;
+    min-height: 36px;
+  }
+
+  /* Results grid: single column on mobile */
+  .explore-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  /* Trending topics: compact list */
+  .explore-trending-list {
+    padding: var(--space-4);
+  }
+
+  .explore-trending-item {
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--border-soft);
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Full-bleed featured card */
+  .explore-featured-card {
+    border-radius: 0;
+    margin: 0 calc(-1 * var(--space-4));
+  }
+
+  /* Topic tag cloud wraps */
+  .explore-tag-cloud {
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding: var(--space-4);
+  }
+
+  /* Search suggestion overlay: full screen on mobile */
+  .search-suggestions-overlay {
+    position: fixed;
+    top: calc(60px + var(--safe-top));
+    left: 0;
+    right: 0;
+    bottom: var(--bottom-nav-height);
+    background: var(--surface-page);
+    z-index: 100;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Tablet: 2-column grid */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .explore-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,77 @@
+/* ============================================
+   LUMINA — CLS PREVENTION
+   Every element that could shift layout gets
+   explicit dimensions before its content loads.
+   Target: CLS ≤ 0.05
+   ============================================ */
+
+/* All images: prevent collapsed height before src loads */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Story cover: aspect-ratio box prevents shift */
+.story-cover-wrapper {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  background: var(--soul-50);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Avatar: fixed dimensions, placeholder bg */
+.avatar {
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: var(--soul-100);
+}
+
+/* Skeleton cards must exactly match real card dimensions */
+.skeleton-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  min-height: 200px;
+}
+
+/* Dynamic counters: reserve width for largest possible number */
+.animated-counter,
+.sidebar-badge,
+.reaction-count {
+  font-variant-numeric: tabular-nums;
+  min-width: 3ch;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Notification badge: stable width from 0→99 */
+.sidebar-badge {
+  min-width: 18px;
+}
+
+/* Toast container: positioned fixed, never affects layout */
+.toast-container {
+  position: fixed;
+  pointer-events: none;
+}
+
+/* Feed items: stable height before lazy images load */
+.feed-item-image {
+  aspect-ratio: 16 / 9;
+  background: var(--soul-50);
+}
+
+/* Profile hero: explicit height */
+.profile-hero {
+  min-height: 180px;
+}
+
+/* Auth layout: no shift during validation messages */
+.form-field {
+  min-height: calc(var(--space-16) + var(--space-5));
+}
+
+/* Story hero */
+.story-hero {
+  min-height: 220px;
+}

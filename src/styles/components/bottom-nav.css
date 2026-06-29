@@ -1,0 +1,91 @@
+/* ============================================
+   LUMINA — MOBILE BOTTOM TAB BAR
+   ============================================ */
+
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 64px;
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border-soft);
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.bottom-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 64px;
+  padding: 0 var(--space-2);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: var(--weight-medium);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--dur-fast) var(--ease-gentle),
+    transform var(--dur-fast) var(--ease-spring);
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+}
+
+.bottom-nav-item.is-active {
+  color: var(--soul-600);
+}
+
+.bottom-nav-item.is-active::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--soul-500);
+}
+
+.bottom-nav-item:active {
+  transform: scale(0.88);
+  transition-duration: var(--dur-instant);
+}
+
+/* Write button — elevated gold pill */
+.bottom-nav-write {
+  background: var(--soul-500) !important;
+  color: var(--stone-900) !important;
+  border-radius: var(--radius-full) !important;
+  width: 52px;
+  height: 52px;
+  box-shadow: 0 4px 20px rgba(245,168,0,0.4);
+  transform: translateY(-6px);
+  flex-direction: row !important;
+  font-size: 0 !important;
+  padding: 0 !important;
+  min-width: 52px;
+}
+
+.bottom-nav-write:active {
+  transform: translateY(-6px) scale(0.92) !important;
+}
+
+.bottom-nav-write::after { display: none !important; }
+
+@media (max-width: 767px) {
+  .bottom-nav { display: flex; }
+}

@@ -1,0 +1,162 @@
+/* ============================================
+   LUMINA DESIGN TOKENS — COLOR SYSTEM
+   ============================================ */
+
+:root {
+  /* —— SOUL (Primary Brand) — Warm Amber-Gold —— */
+  --soul-50:  #FFFBF0;
+  --soul-100: #FFF3D0;
+  --soul-200: #FFE49A;
+  --soul-300: #FFD166;
+  --soul-400: #FFC233;
+  --soul-500: #F5A800;
+  --soul-600: #CC8800;
+  --soul-700: #A36B00;
+  --soul-800: #7A5000;
+  --soul-900: #3D2800;
+
+  /* —— BLOOM (Secondary) — Soft Rose-Peach —— */
+  --bloom-50:  #FFF5F5;
+  --bloom-100: #FFE8E5;
+  --bloom-200: #FFD0CA;
+  --bloom-300: #FFB3AA;
+  --bloom-400: #FF8F82;
+  --bloom-500: #FF6B5B;
+  --bloom-600: #E54E3E;
+  --bloom-700: #C43328;
+  --bloom-800: #921F18;
+  --bloom-900: #610F0A;
+
+  /* —— SAGE (Tertiary) — Soft Forest Green —— */
+  --sage-50:  #F2FAF4;
+  --sage-100: #DCF2E3;
+  --sage-200: #B8E4C6;
+  --sage-300: #8DD1A4;
+  --sage-400: #5CB87E;
+  --sage-500: #3A9D5C;
+  --sage-600: #2D7D49;
+  --sage-700: #215E37;
+  --sage-800: #164026;
+  --sage-900: #0B2215;
+
+  /* —— DUSK (Accent) — Lavender-Purple —— */
+  --dusk-50:  #F8F5FF;
+  --dusk-100: #EDE6FF;
+  --dusk-200: #D9CCFF;
+  --dusk-300: #BFA8FF;
+  --dusk-400: #9E7EFF;
+  --dusk-500: #7C53F5;
+  --dusk-600: #6338E0;
+  --dusk-700: #4C25C4;
+  --dusk-800: #3718A0;
+  --dusk-900: #220E6E;
+
+  /* —— STONE (Neutrals) — Warm Gray, never cold —— */
+  --stone-0:   #FDFCF9;
+  --stone-50:  #F8F6F1;
+  --stone-100: #EDE9E0;
+  --stone-200: #DDD8CC;
+  --stone-300: #C4BDB0;
+  --stone-400: #A09890;
+  --stone-500: #7D7570;
+  --stone-600: #5A5450;
+  --stone-700: #3D3A37;
+  --stone-800: #252320;
+  --stone-900: #141210;
+
+  /* —— SEMANTIC TOKENS —— */
+  --color-success:      var(--sage-500);
+  --color-success-bg:   var(--sage-50);
+  --color-warning:      var(--soul-500);
+  --color-warning-bg:   var(--soul-50);
+  --color-error:        var(--bloom-500);
+  --color-error-bg:     var(--bloom-50);
+  --color-info:         var(--dusk-500);
+  --color-info-bg:      var(--dusk-50);
+
+  /* —— SURFACES —— */
+  --surface-page:       var(--stone-50);
+  --surface-card:       var(--stone-0);
+  --surface-card-hover: var(--soul-50);
+  --surface-overlay:    rgba(253,252,249,0.92);
+  --surface-glass:      rgba(253,252,249,0.70);
+
+  /* —— BORDERS —— */
+  --border-soft:        rgba(160,152,144,0.25);
+  --border-default:     var(--stone-200);
+  --border-strong:      var(--stone-300);
+  --border-focus:       var(--soul-400);
+
+  /* —— TEXT —— */
+  --text-primary:       var(--stone-800);
+  --text-body:          var(--stone-700);
+  --text-secondary:     var(--stone-600);
+  --text-muted:         var(--stone-500);
+  --text-placeholder:   var(--stone-400);
+  --text-link:          var(--soul-600);
+  --text-link-hover:    var(--soul-700);
+
+  /* —— INTERACTIVE —— */
+  --interactive-primary:             var(--soul-500);
+  --interactive-primary-hover:       var(--soul-600);
+  --interactive-primary-text:        var(--stone-900);
+  --interactive-secondary:           transparent;
+  --interactive-secondary-border:    var(--stone-300);
+  --interactive-secondary-hover-bg:  var(--stone-100);
+}
+
+/* —— DARK MODE — Twilight Palette —— */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-page:    #1A1814;
+    --surface-card:    #222019;
+    --surface-card-hover: #2A2720;
+    --surface-glass:   rgba(26,24,20,0.80);
+    --surface-overlay: rgba(26,24,20,0.94);
+
+    --border-soft:     rgba(255,240,200,0.08);
+    --border-default:  rgba(255,240,200,0.14);
+    --border-strong:   rgba(255,240,200,0.24);
+
+    --text-primary:    #F5EFE0;
+    --text-body:       #D9D0C0;
+    --text-secondary:  #B0A898;
+    --text-muted:      #7A7268;
+    --text-placeholder:#5A5450;
+    --text-link:       var(--soul-300);
+    --text-link-hover: var(--soul-200);
+
+    --interactive-primary:       var(--soul-400);
+    --interactive-primary-hover: var(--soul-300);
+    --interactive-primary-text:  var(--stone-900);
+  }
+}
+
+/* —— MOOD THEMES —— */
+[data-mood="bloom"] {
+  --soul-300: #FFB3AA;
+  --soul-400: #FF8F82;
+  --soul-500: #FF6B5B;
+  --soul-600: #E54E3E;
+}
+
+[data-mood="forest"] {
+  --soul-300: #8DD1A4;
+  --soul-400: #5CB87E;
+  --soul-500: #3A9D5C;
+  --soul-600: #2D7D49;
+}
+
+[data-mood="dusk"] {
+  --soul-300: #BFA8FF;
+  --soul-400: #9E7EFF;
+  --soul-500: #7C53F5;
+  --soul-600: #6338E0;
+}
+
+[data-mood="ocean"] {
+  --soul-300: #80D8E8;
+  --soul-400: #4BBFD6;
+  --soul-500: #1EA8C4;
+  --soul-600: #1588A0;
+}

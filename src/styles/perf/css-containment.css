@@ -1,0 +1,39 @@
+/* ============================================
+   LUMINA — CSS CONTAINMENT
+   Isolates elements so the browser can skip
+   reflow/repaint work outside each boundary.
+   ============================================ */
+
+/* Story cards are isolated visual units */
+.story-card {
+  contain: layout paint style;
+}
+
+/* Feed list — independent scroll container.
+   content-visibility skips rendering off-screen cards entirely. */
+.feed-list {
+  contain: strict;
+  overflow-y: auto;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}
+
+/* Sidebar is visually isolated from page layout */
+.sidebar {
+  contain: layout paint style;
+}
+
+/* Each chat bubble is independent */
+.chat-bubble {
+  contain: layout paint;
+}
+
+/* Bottom sheet — isolated layer */
+.bottom-sheet {
+  contain: layout paint;
+}
+
+/* Notification item */
+.notification-item {
+  contain: layout paint;
+}

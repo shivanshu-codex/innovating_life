@@ -1,0 +1,248 @@
+/* ============================================
+   LUMINA — WRITE PAGE (DISTRACTION-FREE COMPOSER)
+   ============================================ */
+
+.write-page {
+  min-height: 100vh;
+  background: var(--surface-page);
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23a09890' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.write-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-6);
+  gap: var(--space-3);
+  background: var(--surface-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.write-container {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-6) var(--space-20);
+}
+
+.write-topic-picker {
+  margin-bottom: var(--space-6);
+}
+
+.write-topic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-default);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-spring);
+}
+.write-topic-btn:hover {
+  border-color: var(--soul-300);
+  background: var(--soul-50);
+  color: var(--soul-700);
+}
+
+.write-mood-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+/* Mood selector */
+.mood-selector {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-8);
+}
+
+.mood-pill {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-default);
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all var(--dur-fast) var(--ease-spring);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+  user-select: none;
+  color: var(--text-secondary);
+}
+
+.mood-pill:hover {
+  border-color: var(--soul-300);
+  background: var(--soul-50);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.mood-pill.is-selected {
+  border-color: var(--soul-400);
+  background: var(--soul-100);
+  color: var(--soul-800);
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 4px 12px rgba(245,168,0,0.2);
+}
+
+/* Title input */
+.write-title-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--weight-bold);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  resize: none;
+  outline: none;
+  padding: 0;
+  margin-bottom: var(--space-6);
+  min-height: 1.2em;
+  overflow: hidden;
+  font-variation-settings: 'opsz' 40, 'wght' 700;
+  display: block;
+}
+
+.write-title-input::placeholder { color: var(--stone-300); }
+
+/* Body textarea */
+.write-body-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--text-body);
+  resize: none;
+  outline: none;
+  padding: 0;
+  min-height: 280px;
+  display: block;
+}
+
+.write-body-input::placeholder {
+  color: var(--stone-300);
+  font-style: italic;
+}
+
+/* Character counter */
+.write-char-counter {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  text-align: right;
+  transition: color var(--dur-fast) var(--ease-gentle);
+}
+.write-char-counter.is-near-limit { color: var(--soul-600); }
+.write-char-counter.is-at-limit   { color: var(--bloom-500); }
+
+/* Formatting toolbar */
+.write-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+  margin: var(--space-6) 0;
+}
+
+.toolbar-btn {
+  width: 32px; height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  transition:
+    background var(--dur-fast) var(--ease-gentle),
+    color var(--dur-fast) var(--ease-gentle),
+    transform var(--dur-fast) var(--ease-spring);
+}
+
+.toolbar-btn:hover {
+  background: var(--surface-card-hover);
+  color: var(--text-primary);
+  transform: scale(1.12);
+}
+
+.toolbar-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border-default);
+  margin: 0 var(--space-1);
+}
+
+/* Options row */
+.write-options {
+  display: flex;
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.write-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.write-toggle {
+  width: 36px; height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--stone-200);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--dur-fast) var(--ease-gentle);
+  flex-shrink: 0;
+}
+
+.write-toggle.is-on {
+  background: var(--soul-500);
+}
+
+.write-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: white;
+  transition: transform var(--dur-fast) var(--ease-spring);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.write-toggle.is-on::after {
+  transform: translateX(16px);
+}

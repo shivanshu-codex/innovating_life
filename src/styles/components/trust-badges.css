@@ -1,0 +1,113 @@
+.badge-verified {
+  display:     inline-flex;
+  align-items: center;
+  gap:         3px;
+  font-size:   var(--text-xs);
+  color:       var(--soul-700);
+  background:  var(--soul-50);
+  border:      1px solid var(--soul-200);
+  border-radius: var(--radius-full);
+  padding:     2px 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-verified__icon {
+  color:     var(--soul-500);
+  font-size: 0.8rem;
+}
+
+.badge-moderator {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           3px;
+  font-size:     var(--text-xs);
+  color:         var(--dusk-700);
+  background:    var(--dusk-50);
+  border:        1px solid var(--dusk-200);
+  border-radius: var(--radius-full);
+  padding:       2px 8px;
+  font-weight:   600;
+}
+
+.badge-new {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           3px;
+  font-size:     var(--text-xs);
+  color:         var(--sage-700);
+  background:    var(--sage-50);
+  border:        1px solid var(--sage-200);
+  border-radius: var(--radius-full);
+  padding:       2px 8px;
+  font-weight:   500;
+}
+
+.author-trust-row {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  flex-wrap:   wrap;
+  margin-top:  var(--space-1);
+}
+
+.trust-indicators {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-6);
+  flex-wrap:       wrap;
+  padding:         var(--space-8) 0;
+}
+
+.trust-indicator {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  color:       var(--stone-500);
+  font-size:   var(--text-sm);
+}
+
+.trust-indicator__icon {
+  color:     var(--soul-500);
+  font-size: 1.1rem;
+}
+
+.trust-section {
+  padding:       var(--space-12) var(--space-4);
+  background:    var(--stone-50);
+  border-radius: var(--radius-2xl);
+  margin:        var(--space-10) 0;
+}
+
+.trust-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap:                   var(--space-6);
+  margin-top:            var(--space-8);
+}
+
+.trust-card {
+  padding:       var(--space-5);
+  background:    white;
+  border-radius: var(--radius-xl);
+  box-shadow:    var(--shadow-sm);
+}
+
+.trust-card__icon {
+  font-size:     1.8rem;
+  margin-bottom: var(--space-3);
+}
+
+.trust-card__title {
+  font-size:     var(--text-base);
+  font-weight:   700;
+  color:         var(--stone-800);
+  margin-bottom: var(--space-2);
+}
+
+.trust-card__body {
+  font-size:   var(--text-sm);
+  color:       var(--stone-500);
+  line-height: 1.6;
+}

@@ -1,0 +1,42 @@
+.wordmark {
+  font-family:   var(--font-display);
+  font-size:     inherit;
+  font-weight:   700;
+  letter-spacing:-0.02em;
+  color:         var(--stone-900);
+  line-height:   1;
+  font-style:    normal;
+  font-variant:  normal;
+}
+
+.wordmark--gold     { color: var(--soul-500); }
+.wordmark--reversed { color: white; }
+
+.logo {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             0.35em;
+  text-decoration: none;
+  line-height:     1;
+}
+
+.logo__symbol {
+  color:     var(--soul-500);
+  font-size: 1em;
+  line-height:1;
+  flex-shrink:0;
+  position:  relative;
+  top:       -0.05em;
+}
+
+.logo__text {
+  font-family:    var(--font-display);
+  font-weight:    700;
+  letter-spacing: -0.02em;
+  color:          var(--stone-900);
+  line-height:    1;
+}
+
+.nav-logo    { font-size: 1.25rem; }
+.footer-logo { font-size: 1rem;    }
+.email-logo  { font-size: 1.5rem;  }

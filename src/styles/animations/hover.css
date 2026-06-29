@@ -1,0 +1,23 @@
+/* ============================================
+   LUMINA — HOVER STATE ANIMATIONS
+   ============================================ */
+
+.card-interactive {
+  transition:
+    transform var(--dur-normal) var(--ease-spring),
+    box-shadow var(--dur-normal) var(--ease-out-expo),
+    background var(--dur-fast) var(--ease-gentle);
+  will-change: transform;
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-soul);
+  background: var(--surface-card-hover);
+}
+
+.card-interactive:active {
+  transform: translateY(-1px) scale(0.998);
+  transition-duration: var(--dur-fast);
+}
