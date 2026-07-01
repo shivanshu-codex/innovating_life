@@ -832,6 +832,7 @@ document.addEventListener('keydown', (e) => {
 
 /* ─── INIT ───────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', async () => {
+  localStorage.removeItem('il_posts');
   setupNavbar();
   initParticles();
   setupFilters();
