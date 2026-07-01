@@ -193,7 +193,6 @@ function loadPosts() {
     const stored = localStorage.getItem('il_posts');
     if (stored) posts = JSON.parse(stored);
   } catch (e) { posts = []; }
-  if (!posts.length) seedPosts();
 }
 
 function getMyPostIds() {
@@ -215,49 +214,6 @@ function toggleLikeStore(id) {
   localStorage.setItem('il_likes', JSON.stringify(likes));
 }
 
-/* ─── SEED POSTS ─────────────────────────────────────────── */
-function seedPosts() {
-  const now = Date.now();
-  posts = [
-    {
-      id: 'seed1', name: 'Arjun Mehta', city: 'Mumbai', category: 'Purpose',
-      title: 'What if success is the wrong goal?',
-      content: "I spent a decade chasing promotions and realized last year that I'd optimized for the wrong thing entirely. I was successful by every metric I'd been taught to care about — and deeply disconnected from everything that made me feel alive. Now I'm relearning what the right goal even is. It turns out it has something to do with presence, not achievement.",
-      likes: 47, time: now - 86400000 * 3, mood: 'reflective', isQuestion: false
-    },
-    {
-      id: 'seed2', name: 'Amara Diallo', city: 'Lagos', category: 'Relationships',
-      title: 'Love as a daily practice',
-      content: "People talk about love like it's a feeling you either have or don't. But I think it's more like gardening — you tend to it every day or it withers. The most enduring relationships I've witnessed are between people who chose each other again every single morning. Not dramatically. Just quietly, on purpose.",
-      likes: 89, time: now - 86400000 * 5, mood: 'hopeful', isQuestion: false
-    },
-    {
-      id: 'seed3', name: 'Maja Kovac', city: 'Ljubljana', category: 'Mindfulness',
-      title: 'The slow revolution of small moments',
-      content: "There is a café near my apartment where I sit every Saturday morning. Nothing happens. I drink coffee. I watch people. But those two hours have become the most important of my week — not because anything extraordinary occurs, but because I'm fully there. We underestimate the power of showing up to ordinary life.",
-      likes: 63, time: now - 86400000 * 7, mood: 'peaceful', isQuestion: false
-    },
-    {
-      id: 'seed4', name: 'Lerato Sithole', city: 'Johannesburg', category: 'Growth',
-      title: "On becoming someone you don't recognize",
-      content: "Growth is a strange thing. Everyone says they want it but nobody mentions how disorienting it is — how you sometimes look in the mirror and don't quite recognize the person looking back. Not because something went wrong, but because something went right. I've been unsettled lately. I think it means I'm becoming.",
-      likes: 102, time: now - 86400000 * 9, mood: 'curious', isQuestion: false
-    },
-    {
-      id: 'seed5', name: 'Daniel Walsh', city: 'Toronto', category: 'Happiness',
-      title: 'Why I stopped pursuing happiness',
-      content: "The pursuit of happiness is maybe the most exhausting thing we do. I've started pursuing meaning instead — the two often overlap, but meaning persists through difficulty in a way happiness doesn't. Happiness is weather. Meaning is climate. I want to live somewhere with good climate.",
-      likes: 78, time: now - 86400000 * 11, mood: 'determined', isQuestion: false
-    },
-    {
-      id: 'seed6', name: 'Kenji Watanabe', city: 'Kyoto', category: 'Wisdom',
-      title: 'What the old teach us about time',
-      content: "My grandmother is 91. She doesn't hurry anywhere. She makes tea in the same deliberate way she has for 70 years. I used to think it was age that slowed her. Now I think it's wisdom — she knows that the way you do one thing is the way you do everything. She is teaching me, without words, how to live.",
-      likes: 134, time: now - 86400000 * 14, mood: 'grateful', isQuestion: false
-    }
-  ];
-  savePosts();
-}
 
 /* ─── MOOD COLORS ────────────────────────────────────────── */
 const MOOD_COLORS = {
