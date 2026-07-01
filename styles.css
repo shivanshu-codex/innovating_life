@@ -179,14 +179,29 @@ p { font-weight: 400; }
     display: flex; align-items: center; gap: 32px;
 }
 .nav-logo {
-    display: flex; align-items: center; gap: 8px;
-    font-family: var(--font-body);
-    font-size: 1.2rem; font-weight: 700;
-    letter-spacing: -0.02em; flex-shrink: 0;
-    color: var(--text-heading);
+    display: flex; align-items: center;
+    flex-shrink: 0; text-decoration: none;
 }
-.logo-star { color: var(--gold); font-size: 1rem; animation: spinSlow 10s linear infinite; display: inline-block; }
-.logo-accent { color: var(--primary); }
+.logo-text {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.45rem;
+    letter-spacing: 0.01em;
+    font-style: normal;
+    background: linear-gradient(110deg, #F97316 0%, #EC4899 38%, #8B5CF6 68%, #06B6D4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% auto;
+    animation: logoShimmer 4s linear infinite;
+}
+.logo-text em {
+    font-style: normal;
+}
+@keyframes logoShimmer {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
 .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; }
 .nav-link {
     padding: 8px 14px; border-radius: 50px;
@@ -656,7 +671,8 @@ p { font-weight: 400; }
     padding: 72px 0 32px;
 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 52px; }
-.footer-brand .nav-logo { margin-bottom: 14px; font-size: 1.15rem; color: white; }
+.footer-brand .nav-logo { margin-bottom: 14px; }
+.footer-brand .logo-text { font-size: 1.35rem; }
 .footer-tagline { color: rgba(255,255,255,0.45); font-size: 0.875rem; line-height: 1.7; margin-bottom: 24px; }
 .social-row { display: flex; gap: 10px; }
 .social-btn {
