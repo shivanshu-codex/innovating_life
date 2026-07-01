@@ -4,6 +4,11 @@
 
 'use strict';
 
+/* ─── SUPABASE ───────────────────────────────────────────── */
+const _SB_URL = 'https://ahomhbsvynfdawaxqbuw.supabase.co';
+const _SB_KEY = 'sb_publishable_SI7PwnyiN010Cbnu50F28Q_0N2H13aJ';
+const db = supabase.createClient(_SB_URL, _SB_KEY);
+
 /* ─── ORACLE MESSAGES (Part 7: 24+ messages) ─────────────── */
 const ORACLE_MESSAGES = {
   morning: [
@@ -186,13 +191,31 @@ function animateCounters() {
 }
 
 /* ─── LOCAL STORAGE ──────────────────────────────────────── */
-function savePosts() { localStorage.setItem('il_posts', JSON.stringify(posts)); }
+function savePosts() { /* posts now live in Supabase */ }
 
-function loadPosts() {
+async function loadPosts() {
   try {
-    const stored = localStorage.getItem('il_posts');
-    if (stored) posts = JSON.parse(stored);
-  } catch (e) { posts = []; }
+    const { data, error } = await db
+      .from('stories')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) throw error;
+    posts = (data || []).map(row => ({
+      id: row.id,
+      name: row.name,
+      city: row.city || '',
+      category: row.category || 'Life',
+      title: row.title,
+      content: row.content,
+      mood: row.mood || null,
+      likes: row.likes || 0,
+      time: new Date(row.created_at).getTime(),
+      isQuestion: false
+    }));
+  } catch (e) {
+    console.error('Could not load stories:', e);
+    posts = [];
+  }
 }
 
 function getMyPostIds() {
@@ -467,11 +490,11 @@ function editPost(id) {
   }, 450);
 }
 
-function deletePost(id) {
+async function deletePost(id) {
   if (!confirm('Delete this story? This cannot be undone.')) return;
+  await db.from('stories').delete().eq('id', id);
   posts = posts.filter(p => p.id !== id);
   removeMyPostId(id);
-  savePosts();
   renderPosts(activeFilter);
   updateHeroStats();
   showToast('Your story has been removed.');
@@ -554,7 +577,7 @@ function setupPostForm() {
   if (!form) return;
   document.getElementById('postContent')?.addEventListener('input', updateCharCount);
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = (document.getElementById('postName')?.value || '').trim();
     const city = (document.getElementById('postCity')?.value || '').trim();
@@ -565,33 +588,39 @@ function setupPostForm() {
     if (!name || !city || !title || !content) { showToast('Please fill in all required fields.'); return; }
     if (content.length > 1000) { showToast('Content is too long. Keep it under 1000 characters.'); return; }
 
+    const submitBtn = document.getElementById('submitBtn');
+    if (submitBtn) submitBtn.disabled = true;
+
     if (editMode && editPostId) {
       const idx = posts.findIndex(p => p.id === editPostId);
       if (idx !== -1) {
         posts[idx] = { ...posts[idx], name, city, title, content, category, mood: selectedMood ? selectedMood.toLowerCase() : posts[idx].mood };
-        savePosts();
         resetForm(form);
         renderPosts(activeFilter);
         showToast('Your story has been updated!');
       }
     } else {
-      const newPost = {
-        id: 'post_' + Date.now(),
+      const { data, error } = await db.from('stories').insert({
         name, city, title, content, category,
-        likes: 0, time: Date.now(),
         mood: selectedMood ? selectedMood.toLowerCase() : null,
-        isQuestion: !!currentQuestionContext,
-        questionText: currentQuestionContext || null
-      };
-      posts.unshift(newPost);
-      addMyPostId(newPost.id);
-      savePosts();
-      resetForm(form);
-      renderPosts(activeFilter);
-      updateHeroStats();
-      showToast('Your story has been shared with the world!');
-      document.querySelector('#community')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        likes: 0
+      }).select().single();
+
+      if (error) {
+        showToast('Something went wrong. Please try again.');
+        console.error(error);
+      } else {
+        addMyPostId(data.id);
+        await loadPosts();
+        resetForm(form);
+        renderPosts(activeFilter);
+        updateHeroStats();
+        showToast('Your story has been shared with the world!');
+        document.querySelector('#community')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
+
+    if (submitBtn) submitBtn.disabled = false;
   });
 }
 
@@ -802,16 +831,16 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ─── INIT ───────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  loadPosts();
+document.addEventListener('DOMContentLoaded', async () => {
   setupNavbar();
   initParticles();
   setupFilters();
   setupMoodTags();
   setupPostForm();
   setupQuestionLinks();
-  renderPosts('all');
-  updateHeroStats();
   initOnboarding();
   observeReveal();
+  await loadPosts();
+  renderPosts('all');
+  updateHeroStats();
 });
