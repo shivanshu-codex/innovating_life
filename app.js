@@ -13,94 +13,94 @@ const db = supabase.createClient(_SB_URL, _SB_KEY);
 const ORACLE_MESSAGES = {
   morning: [
     {
-      message: "This morning holds an invitation for you, {name}. In {city} and everywhere else, the day begins before we're ready — but perhaps readiness is overrated. What if you simply showed up, exactly as you are, and let life surprise you?",
-      quote: "The morning comes whether you set the alarm or not. — Ursula K. Le Guin"
+      message: "Good morning, {name}! {city} is buzzing with energy today and so are you. This morning is your blank canvas — and you already have everything you need to make it brilliant. Go out there and own it!",
+      quote: "Every morning is a chance to be better than yesterday. — Unknown"
     },
     {
-      message: "Good morning, {name}. The first thought you had today — that small flicker before the world rushed in — that was the truest version of you. Everything else is negotiation. Honor that flicker.",
-      quote: "Each morning we are born again. What we do today is what matters most. — Buddha"
+      message: "Hey {name}, the people of {city} who are making things happen today? You are one of them. The energy you carry this morning is contagious — someone around you is going to smile because you showed up.",
+      quote: "Believe you can and you're halfway there. — Theodore Roosevelt"
     },
     {
-      message: "There's something almost sacred about the hour you find yourself in now, {name}. {city} is waking up around you, and so are you — not just from sleep, but from yesterday's version of yourself.",
-      quote: "With the new day comes new strength and new thoughts. — Eleanor Roosevelt"
+      message: "Rise and shine, {name}! There is something amazing waiting for you in {city} today — a conversation, an idea, a little win you didn't see coming. Keep your eyes open and your heart ready. Today is going to be good.",
+      quote: "The secret of getting ahead is getting started. — Mark Twain"
     }
   ],
   afternoon: [
     {
-      message: "Mid-afternoon in {city} — and somewhere in the rhythm of your day, {name}, you paused here. That pause is not nothing. It might be the most alive moment you've had today. What does your life feel like right now, at this exact moment?",
-      quote: "The present moment always will have been. — Unknown"
+      message: "You are right in the middle of a great day, {name}! Look at everything you have already done since morning — the people of {city} are lucky to have your energy in their city. Keep the momentum going, the best part is still ahead!",
+      quote: "Keep going. Everything you need will come to you at the right time. — Unknown"
     },
     {
-      message: "You've made it to the middle of the day, {name}. Not everything has gone to plan — it rarely does. But here you are, still navigating, still thinking, still curious. That counts for more than you know.",
-      quote: "Life is what happens when you're busy making other plans. — John Lennon"
+      message: "Hey {name}, the afternoon in {city} is full of possibilities. That idea you had this morning? Now is the perfect time to act on it. You have got the skills, the drive, and the right moment. Make it happen!",
+      quote: "You are braver than you believe, stronger than you seem, and smarter than you think. — A.A. Milne"
     },
     {
-      message: "Somewhere in {city} right now, someone is laughing loudly, someone is crying quietly, someone is falling in love. And you, {name}, are here — thinking about what it means to live. That is not nothing. That is everything.",
-      quote: "Not all those who wander are lost. — J.R.R. Tolkien"
+      message: "{name}, right now in {city} people are building their dreams one step at a time — just like you are. Every small action you take today adds up to something wonderful. You are doing better than you think!",
+      quote: "Small steps every day lead to big results every year. — Unknown"
     }
   ],
   evening: [
     {
-      message: "The evening belongs to reflection, {name}. As {city} settles into night, what part of today would you want to carry into tomorrow? Not the whole day — just a thread. That thread is your compass.",
-      quote: "At the end of the day, let there be no excuses, no explanations, no regrets. — Steve Maraboli"
+      message: "What a day, {name}! {city} was better today because you were in it. Tonight, take a moment to smile at everything you did — even the smallest win counts. You showed up, and that is always worth celebrating.",
+      quote: "At the end of each day, you should play back the tapes of your performance. — Tom Hopkins"
     },
     {
-      message: "Evening has a way of softening things, {name}. The urgencies of morning seem smaller now. What feels true to you tonight — not what should be true, or what you wish were true — just what actually feels real?",
-      quote: "The evening is an invitation to rest in who you are before the world asks you to be something else. — Unknown"
+      message: "Evening in {city} is beautiful, {name}, and so is the story you are building. Tonight is the perfect time to dream a little bigger about tomorrow. The energy you have built today is just the beginning — your best chapters are still being written!",
+      quote: "Every day is a new beginning. Take a deep breath and start again. — Unknown"
     },
     {
-      message: "You are ending this day, {name}, having survived every hard moment so far — which is a perfect record. {city} grows quiet. Let your mind grow quiet too, just for now.",
-      quote: "Be kind to yourself this evening. — Atticus"
+      message: "Good evening, {name}! The city of {city} has seen a lot of great people — and you are one of them. Tonight, rest easy knowing that every step you took today was moving you closer to the life you want. Tomorrow, you go again!",
+      quote: "Success is the sum of small efforts repeated day in and day out. — Robert Collier"
     }
   ],
   any: [
     {
-      message: "Life, {name}, is less a destination than a practice. And like any practice — music, meditation, love — it demands your presence more than your perfection. What are you practicing today?",
-      quote: "We are what we repeatedly do. Excellence, then, is not an act, but a habit. — Aristotle"
+      message: "Hey {name}! Living in {city} means you are surrounded by energy, culture, and opportunity every single day. You are in exactly the right place to do something amazing. What is the one thing you are going to make happen today?",
+      quote: "The future belongs to those who believe in the beauty of their dreams. — Eleanor Roosevelt"
     },
     {
-      message: "{name}, from {city}: your perspective on living matters more than you think. Not because it will change the world (though it might), but because naming what you believe helps you live it more faithfully.",
-      quote: "An unexamined life is not worth living. — Socrates"
+      message: "{name}, you are the kind of person who makes {city} a better place just by being in it. Your ideas matter, your enthusiasm is real, and the world genuinely needs what only you can bring. Go show them what you are made of!",
+      quote: "You have everything you need to build something far bigger than yourself. — Unknown"
     },
     {
-      message: "The question isn't whether you are living the 'right' life, {name}. The question is whether the life you're living feels like yours. Do you recognize yourself in it?",
-      quote: "To live is the rarest thing in the world. Most people exist, that is all. — Oscar Wilde"
+      message: "Life in {city} moves fast, {name} — but you are keeping up beautifully. Every experience you have had, every connection you have made, is sharpening you into someone extraordinary. The best version of you is showing up more every day!",
+      quote: "Growth is never by mere chance; it is the result of forces working together. — James Cash Penney"
     },
     {
-      message: "People in {city} and everywhere carry invisible weights, {name}. You do too. The goal isn't to have no weight — it's to carry yours with dignity and set it down sometimes. What do you need to set down today?",
-      quote: "You don't have to be positive all the time. — Lori Deschene"
+      message: "Something exciting is heading your way, {name}. The good energy you put out in {city} every day has a way of coming right back to you — as opportunities, as new people, as great moments. Stay open and stay excited!",
+      quote: "Positive energy generates positive results. — Scott Johnson"
     },
     {
-      message: "There is a version of your life that is entirely possible from where you stand today, {name}. Not a perfect version. Not a dramatically different one. Just one where you're slightly more honest, slightly more present, slightly more yourself.",
-      quote: "The only journey is the one within. — Rainer Maria Rilke"
+      message: "{name}, the most exciting thing about your life right now is that you are still writing it! Every person in {city} who inspires you started exactly where you are. Your moment is not coming — it is already here. Step into it!",
+      quote: "Don't wait for opportunity. Create it. — George Bernard Shaw"
     },
     {
-      message: "Something brought you here today, {name}. Maybe curiosity. Maybe loneliness. Maybe a question you can't stop turning over. Whatever it was — trust it. It knows more than you think.",
-      quote: "Follow the energy of what makes you come alive. — Howard Thurman"
+      message: "You know what is genuinely great about you, {name}? You care. About your life, your people, your city. {city} is full of amazing humans and you are one of them. That caring spirit of yours is your superpower — use it today!",
+      quote: "In a gentle way, you can shake the world. — Mahatma Gandhi"
     },
     {
-      message: "In {city} and in the quiet of your own mind, {name}, you've been carrying ideas about life that deserve to be spoken. This is the place. No performance needed — just your honest voice.",
-      quote: "Your story is the greatest legacy that you will leave to your friends. — Steve Saint"
+      message: "Big things are built by people just like you, {name} — people from places like {city} who decided to back themselves fully. You do not need to have it all figured out. You just need to take the next exciting step. What is yours?",
+      quote: "A year from now you will wish you had started today. — Karen Lamb"
     },
     {
-      message: "You will not live this day again, {name}. That is not a threat — it is an invitation. What would make today, even slightly, worth the fact that it existed?",
-      quote: "Do not go where the path may lead; go instead where there is no path and leave a trail. — Ralph Waldo Emerson"
+      message: "The energy in {city} is electric, {name}, and you are a part of that pulse! Every conversation you have, every idea you share, every smile you give out today ripples further than you know. You are making a real difference!",
+      quote: "Act as if what you do makes a difference. It does. — William James"
     },
     {
-      message: "The most radical thing you can do in a world of noise, {name}, is to know what you actually think. Not what you should think. Not what is trending. What you, living your life in {city}, actually believe about how to be alive.",
-      quote: "Dare to be yourself. — Andre Gide"
+      message: "{name}, picture the most exciting version of your life — the one where everything comes together beautifully. That version is not a fantasy. It is a destination, and you are already on the road. Every day in {city} is a step closer. Keep going!",
+      quote: "The only limit to our realization of tomorrow is our doubts of today. — Franklin D. Roosevelt"
     },
     {
-      message: "{name}, the people who have shaped you most probably don't know it. And you have shaped others in ways you'll never fully see. We're all invisible threads in each other's stories. What story are you threading into the world right now?",
-      quote: "No man is an island, entire of itself. — John Donne"
+      message: "Here is something true about you, {name}: you have already done hard things and come out stronger on the other side. Whatever you are building in {city} right now, you have got exactly what it takes to make it real and make it great!",
+      quote: "Strength grows in the moments when you think you can't go on but you keep going anyway. — Unknown"
     },
     {
-      message: "If your life were a book, {name}, this chapter — the one you're living right now — what would it be titled? Not what you wish it were titled. What it actually is.",
-      quote: "Life isn't about finding yourself. Life is about creating yourself. — George Bernard Shaw"
+      message: "The world is genuinely better with your voice in it, {name}. The stories, thoughts, and ideas you carry from {city} deserve to be heard. Do not hold back — share them, live them out loud, and watch how many people you inspire!",
+      quote: "Your life is your message to the world. Make sure it's inspiring. — Lorrin L. Lee"
     },
     {
-      message: "There is so much pressure to have life figured out, {name}. To have the answer. But the people who seem most alive are often the ones most comfortable not knowing — and still showing up anyway.",
-      quote: "Embrace uncertainty. Some of the most beautiful chapters in our lives won't have a title until much later. — Bob Goff"
+      message: "Guess what, {name}? The happiest and most successful people in {city} are not the ones who had perfect conditions — they are the ones who brought their best energy anyway. You have that energy. Today is your day to shine!",
+      quote: "The big secret in life is that there is no big secret. Whatever your goal, you can get there if you are willing to work. — Oprah Winfrey"
     }
   ]
 };
